@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>治愈心灵</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f3e9e9; /* 柔和的背景色 */
+        text-align: center;
+        background-image: url(image/IMG_20240412_113457.jpg);
+        background-position: 30%;
+        background-size:cover;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .quote {
+        font-size: 24px;
+        color: #333;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    a{
+      font-size: 24px;
+        color: #fff;
+        margin-top: 20px;
+        font-weight: bold;
+        text-decoration: none;
+        display: flex;
+    }
+</style>
+</head>
+<body>
+<div class="container"> 
+    <p class="quote"></p>
+    <a href="./video.html" target="_blank">心理健康科普</a>
+    <a href="./facegame.html" target="_blank">笑脸小游戏</a>
+    <a href="./breatheguidance.html" target="_blank">呼吸小动画</a>
+    <a href="./music.html" target="_blank">音乐疗愈法</a>
+    
+  </div>
+
+
+<script>
+    const quotes = [
+        "Believe in yourself, you can do it!",
+        "Every effort is a step towards growth!",
+        "Stay positive and good things will happen!",
+        "努力学会自己取悦自己,学会自嘲自黑,学会接受自己的不完美,坦然的面对人性。 ",
+        "一切都是命运最好的安排，慢慢走，不要急。",
+        "只要活下去，就一定会有很多美好的事情发生！",
+        "这一切都不是你的错。",
+        "一个黑夜之后，都会迎来黎明的曙光。",
+        "心若向阳，无谓阴霾如何弥漫，终将迎来晴空万里。",
+        "世界很大，问题很小，保持微笑，一切都会慢慢好起来。",
+        "人生的容错率很高，请放宽心！"
+        // 可以添加更多激励话语
+    ];
+
+    document.querySelector('body')
+    .addEventListener('click',displayRandomQuote);
+    function displayRandomQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.querySelector('.quote').textContent = `"${quotes[randomIndex]}"`;
+    }
+
+    displayRandomQuote(); // 初始显示随机激励话语
+    
+</script>
+</body>
+</html>
