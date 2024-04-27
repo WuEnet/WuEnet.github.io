@@ -1,0 +1,94 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  background: #5d3800;
+}
+.lightface{
+  /* flex布局 */
+  display:flex;
+  /* 水平垂直居中 */
+  justify-content: center;
+  align-items: center;
+  /* 设置元素的最小高度为视口的高度。vh 是视口高度的单位，等于视口高度的百分比。 */
+  min-height: 90vh;
+  
+}
+.face{
+  /* 相对定位 */
+  position: relative;
+  width: 300px;
+  height:300px;
+  /* 设置边框半径为宽度的一半 呈现为圆形 */
+  border-radius: 50%;
+  background-color: #ffcd00;
+  /* 父元素设置为flex 为后面子元素eye,mouth,做准备 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.face::before{
+  content: '';
+  position: absolute;
+  top:210px;
+  width: 150px;
+  height: 20px;
+  background: #b57700;
+  /* 改变嘴角的弧度 */
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  transition: 0.5s;
+}
+.face:hover:before{
+  top:180px;
+  width: 150px;
+  height: 70px;
+  background: #b57700;
+  /* 改变嘴角的弧度 */
+  border-bottom-left-radius: 70px;
+  border-bottom-right-radius: 70px;
+ 
+}
+.eyes{
+  position: relative;
+  top: -40px;
+  display: flex;
+}
+.eyes .eye{
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: block;
+  background: #fff;
+  margin: 0 15px;
+  border-radius: 50%;
+}
+.eyes .eye::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 25px;
+  transform: translate(-50%,-50%);
+  width: 40px;
+  height: 40px;
+  background: #333;
+  border-radius: 50%;
+}
+.text {
+  text-align: center;
+  margin-top: 25px; /* 调整文本与笑脸之间的间距 */
+  font-size: 35px; /* 设置字体大小为 16 像素 */
+  font-family: Arial, sans-serif; /* 设置字体样式为 Arial 字体，如果该字体不可用，则使用系统默认的 sans-serif 字体 */
+  color: #fff; /* 设置文本颜色为深灰色 */
+  font-weight: bold; /* 设置字体加粗 */
+}
+.text-bottom {
+  text-align: center;
+  margin-top: 0px; /* 调整文本与笑脸之间的间距 */
+  font-size: 25px; /* 设置字体大小为 16 像素 */
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 设置字体样式为 Arial 字体，如果该字体不可用，则使用系统默认的 sans-serif 字体 */
+  color: #fff; /* 设置文本颜色为深灰色 */
+  font-weight: bold; /* 设置字体加粗 */
+}

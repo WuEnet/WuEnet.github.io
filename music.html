@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>音乐疗愈</title>
+  <style>
+    .contain {
+      height: 100vh;
+      width: 100%;
+      background-image: url(./image/bg.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .music-player {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 65px;
+    }
+
+    .controls {
+      margin-top: 10px;
+    }
+
+    .playlist {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .playlist li {
+      margin-top: 5px;
+    }
+
+    .playlist li a {
+      text-decoration: none;
+      color:rgb(26, 75, 7);
+      font-size: 15px;
+      font-family: STHeiti;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="contain">
+    <div class="music-player">
+      <audio id="audio-player" controls>
+        <source src="./songs/闪闪 - 阿呦阿呦.ogg" type="audio/mpeg">
+      </audio>
+      <div class="controls">
+        <!-- 播放按钮 -->
+        <button id="play-pause-button">Play</button>
+        <!-- 调整声音 -->
+        <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+        <!-- 调整进度条 -->
+        <input type="range" id="progress-slider" min="0" max="100" value="0">
+      </div>
+      <ul class="playlist">
+        <li>歌单列表</li>
+        <li><a href="./songs/此情一直在心间 - 海底 (Single Version).ogg" >海底 </a></li>
+        <li><a href="./songs/宋冬野 - 安和桥.ogg">安和桥</a></li>
+        <li><a href="./songs/汪苏泷 - 追光者 (Live).ogg">追光者</a></li>
+        <li><a href="./songs/玄露 _ 萌面 - 快乐女孩.ogg">快乐女孩</a></li>
+        <li><a href="./songs/张杰 _ 封迪 _ 余家辉 _ 谭芷昀 - 仰望星空 (Live).ogg">仰望星空</a></li>
+        <li><a href="./songs/周深 - 铃芽之旅.ogg">铃芽之旅</a></li>
+        <li><a href="./songs/余家辉 - 最美的太阳 (Live).ogg">最美的太阳</a></li>
+        <li><a href="./songs/熊思齐 - 鲸落万物生 (和煦版).ogg">鲸落万物生</a></li>
+        <li><a href="./songs/华晨宇 _ 郎朗 - 好想爱这个世界啊 (Live).ogg">好想爱这个世界啊</a></li>
+        <li><a href="./songs/善宇 - 做自己的光，不需要太亮.ogg">做自己的光，不需要太亮</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script >
+  const audioPlayer = document.getElementById('audio-player');
+    const playPauseButton = document.getElementById('play-pause-button');
+    const volumeSlider = document.getElementById('volume-slider');
+    const progressSlider = document.getElementById('progress-slider');
+    const playlist = document.querySelectorAll('.playlist a');
+    
+    let isPlaying = false;
+    
+    function togglePlay() {
+        if (isPlaying) {
+            audioPlayer.pause();
+            playPauseButton.textContent = 'Play';
+        } else {
+            audioPlayer.play();
+            playPauseButton.textContent = 'Pause';
+        }
+        isPlaying = !isPlaying;
+    }
+    
+    playPauseButton.addEventListener('click', togglePlay);
+    
+    volumeSlider.addEventListener('input', function() {
+        audioPlayer.volume = volumeSlider.value;
+    });
+    
+    progressSlider.addEventListener('input', function() {
+        const progress = audioPlayer.duration * (progressSlider.value / 100);
+        audioPlayer.currentTime = progress;
+    });
+    
+    playlist.forEach(song => {
+        song.addEventListener('click', function(e) {
+            e.preventDefault();
+            audioPlayer.src = this.href;
+            audioPlayer.play();
+            playPauseButton.textContent = 'Pause';
+            isPlaying = true;
+        });
+    });
+    </script>
+</body>
+
+</html>
